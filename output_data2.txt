@@ -1,0 +1,2 @@
+Error: R001 seat number should be a positive number:-1
+Error: R0025 Number of seats should be less than or equal to 20
