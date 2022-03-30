@@ -19,7 +19,7 @@ R002 1
 
 R001 E1 E2 <br />
 R002 J1<br />
-##### output_matdata1.txt<br />
+##### Sample seat allocation<br />
 
 <img width="1183" alt="Output" src="https://user-images.githubusercontent.com/30931914/160734847-63b6f493-3ca6-4314-919a-3c0f0fcb865d.png">
 
@@ -27,6 +27,8 @@ R002 J1<br />
 1. The theater cannot reserve seats for a group if the requested number of seats is greater than the available seats. In that case, the customers are informed about the insufficient number of available seats.
 2. The reservation identifier will be in the format R###
 3. For the purpose of public safety, group member can sit together, different group need to keep 3 seats distance in a row.
+4. All seats are assumed to be empty during the start.
+5. The theater comprises of only one class of seats.
 # Customer Satisfaction:
 1. Since customers are reserving seats for groups, they would prefer sitting togather. So the first priority will be to allocate seats for the group in a single row.
 # Maximum Theater Utilization:
