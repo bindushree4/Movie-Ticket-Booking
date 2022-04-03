@@ -1,4 +1,3 @@
-#Ex: R001 5
 def read_file(file_name):    
     request_array = []
     try:
@@ -13,19 +12,19 @@ def read_file(file_name):
     
 def write_file(file_name, content):
     with open(file_name, 'w') as f:
-        if isinstance(content, str): #checking if content is of type string
+        if isinstance(content, str): 
             f.write(content)
             f.write('\n')
-        elif isinstance(content, list): #checking if content is of type string
+        elif isinstance(content, list): 
             for line in content:
-                f.write(line) #writing into file
+                f.write(line) 
                 f.write('\n')
         else:
             pass
 
 
-def seat_map(number): #converting numbers to alphabets 0->A, 1->B
-    return chr((ord(str(number)) + 17)) # number =4 ; ord(str(4)) + 17) = 69;chr(69)=E
+def seat_map(number): 
+    return chr((ord(str(number)) + 17)) 
 
 
 
@@ -35,7 +34,7 @@ class Theater:
         self.columns = columns
         self.number_of_seats = self.rows * self.columns
         self.file_name = file_name
-        self.remain_seats = [self.columns for _ in range(self.rows)] # [20,20,20,20,20,20,20,20,20,20]
+        self.remain_seats = [self.columns for _ in range(self.rows)] 
         self.write_file_name = 'output_' + self.file_name
         self.mat_file_name  = 'output_mat' + self.file_name
         self.buffer_seats = buffer_seats
@@ -64,8 +63,8 @@ class Theater:
                 line = 'Error: ' + reservationIdentifier + ' ' + 'Reservation number already exits'
             else:
                 dupset.add(reservationIdentifier)
-                seat_alloc = self.seatAllocation(reservationIdentifier, noOfSeats)[:-1] #seat_alloc E1,E2,E3,E4,E5
-                line = reservationIdentifier + ' ' + seat_alloc  # R001  E1,E2,E3,E4,E5
+                seat_alloc = self.seatAllocation(reservationIdentifier, noOfSeats)[:-1] 
+                line = reservationIdentifier + ' ' + seat_alloc  
                 seats = seat_alloc.split(',')
                 
                 for j in seats:
@@ -112,13 +111,13 @@ class Theater:
         res = ''
 
         while 0 <= row < self.rows:
-            if noOfSeats <= self.remain_seats[row]: # chwcks for 4th row total seats available:5< 20
+            if noOfSeats <= self.remain_seats[row]: 
                 for i in range(self.columns - self.remain_seats[row] + 1,
-                               self.columns - self.remain_seats[row] + 1 + noOfSeats): # range(1,6)
-                    res += seat_map(row) + str(i) + ',' # res= E1, E2,E3,E4,E5
-                seats = min(noOfSeats + self.buffer_seats, self.remain_seats[row]) #min(5+3, 20)=8 includes buffer so that next assignment to this row will be done leaving 3 space
-                self.remain_seats[row] -= seats #20-8=12
-                self.number_of_seats -= seats # 12
+                               self.columns - self.remain_seats[row] + 1 + noOfSeats): 
+                    res += seat_map(row) + str(i) + ',' 
+                seats = min(noOfSeats + self.buffer_seats, self.remain_seats[row]) 
+                self.remain_seats[row] -= seats 
+                self.number_of_seats -= seats
 
                 return res
 
